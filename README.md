@@ -13,6 +13,7 @@ _Add screenshots here after running the app._
 3. **Kitchen dashboard** — PIN-protected Pending → Preparing → Ready → Served board, elapsed time, overdue highlighting, realtime order changes, and a new-order sound.
 4. **Live order status** — a guest-facing progress tracker subscribes to Supabase Realtime and updates without a refresh.
 5. **AI Chef’s Concierge** — Groq asks about diet, spice, occasion/appetite, and budget, then recommends only dishes from the live Supabase menu.
+6. **Role status** — choose a customer profile or verify an employee profile using the kitchen PIN, with the employee’s restaurant name shown in the header and kitchen board.
 
 ## Tech stack
 
@@ -57,5 +58,6 @@ _Add screenshots here after running the app._
 - Realtime diner subscriptions use a minimal `order_status_feed` table so order notes and kitchen details are not publicly readable. The SQL script also enables the `orders` table in the Supabase Realtime publication as requested.
 - The kitchen board also refreshes every 15 seconds if a Realtime connection is temporarily unavailable.
 - The concierge rate limiter is in-memory and per server instance; use a shared store for strict global limits on a multi-instance deployment.
+- Employee profiles are verified with the shared `KITCHEN_PIN`, and the restaurant name is a local profile label. This single-restaurant assignment demo does not provide individual employee accounts or tenant-level restaurant data separation.
 - Dish photos are loaded from Unsplash image URLs and require an internet connection.
 - Configure Supabase and Groq credentials before using order storage and the concierge. No order or chat data is copied to a separate application database.
