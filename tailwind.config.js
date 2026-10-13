@@ -1,0 +1,2 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = { content: ['./app/**/*.{js,jsx}', './components/**/*.{js,jsx}'], theme: { extend: { fontFamily: { display: ['var(--font-poppins)'], sans: ['var(--font-inter)'] }, colors: { ink: '#263143', coral: '#ff7768', teal: '#23b8a5', sunshine: '#ffd166', violet: '#8873e8' }, boxShadow: { soft: '0 16px 50px rgba(34,46,70,.09)' } } }, plugins: [] };

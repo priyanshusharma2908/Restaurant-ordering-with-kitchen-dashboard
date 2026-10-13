@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #fffdfa; color: #263143; font-family: var(--font-inter), sans-serif; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+.shell { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+.display { font-family: var(--font-poppins), sans-serif; letter-spacing: -.035em; }
+.gradient-text { background: linear-gradient(100deg,#ff7768,#8c70e8 55%,#21b9a5); color: transparent; background-clip: text; }
+.gradient-button { background: linear-gradient(110deg,#ff7768,#f08a78 55%,#eea36a); box-shadow: 0 10px 24px #ff77683a; transition: transform .2s,box-shadow .2s; }
+.gradient-button:hover { transform: translateY(-2px); box-shadow: 0 14px 28px #ff77684a; }
+.card { border: 1px solid #eee9e2; background: #fff; border-radius: 24px; box-shadow: 0 15px 45px #2631430c; }
+.soft-input { width: 100%; border-radius: 14px; border: 1px solid #e6e3df; background: #fff; padding: 12px 14px; outline: none; transition: box-shadow .2s,border-color .2s; }
+.soft-input:focus { border-color: #8873e8; box-shadow: 0 0 0 3px #8873e826; }
+.animate-in { animation: appear .35s ease both; }
+@keyframes appear { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.pulse-dot { animation: pulse 1.4s infinite; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 10px #23b8a522; } }
+@media print { header, footer, .no-print { display:none!important } body { background:#fff } .shell { width:100% } }
