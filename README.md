@@ -13,7 +13,7 @@ _Add screenshots here after running the app._
 3. **Kitchen dashboard** — PIN-protected Pending → Preparing → Ready → Served board, elapsed time, overdue highlighting, realtime order changes, and a new-order sound.
 4. **Live order status** — a guest-facing progress tracker subscribes to Supabase Realtime and updates without a refresh.
 5. **AI Chef’s Concierge** — Groq asks about diet, spice, occasion/appetite, and budget, then recommends only dishes from the live Supabase menu.
-6. **Role status** — choose a customer profile or verify an employee profile using the kitchen PIN, with the employee’s restaurant name shown in the header and kitchen board.
+6. **Role status** — choose a customer profile or verify a staff profile with a name and kitchen PIN.
 
 ## Tech stack
 
@@ -50,7 +50,7 @@ _Add screenshots here after running the app._
 
 1. Open `/admin/qr`, print Table 1’s QR, or open `/menu?table=1` directly.
 2. Add dishes, include an optional kitchen note, and place the order. Save its tracking link.
-3. Open `/kitchen`, enter the `KITCHEN_PIN`, and move the order through the columns. The guest tracking page updates live.
+3. Open `/kitchen`, enter a staff name and the `KITCHEN_PIN`, and move the order through the columns. The guest tracking page updates live.
 4. On the menu, open “Ask the chef” and share dietary preferences. The concierge suggests matching real menu items that can be added to the same cart.
 
 ## Notes and limitations
@@ -60,4 +60,5 @@ _Add screenshots here after running the app._
 - The concierge rate limiter is in-memory and per server instance; use a shared store for strict global limits on a multi-instance deployment.
 - Employee profiles are verified with the shared `KITCHEN_PIN`, and the restaurant name is a local profile label. This single-restaurant assignment demo does not provide individual employee accounts or tenant-level restaurant data separation.
 - Dish photos are loaded from Unsplash image URLs and require an internet connection.
-- Configure Supabase and Groq credentials before using order storage and the concierge. No order or chat data is copied to a separate application database.
+- Configure Supabase credentials for persistent, cross-device order storage and Groq credentials for AI concierge replies. No order or chat data is copied to a separate application database.
+- Without Supabase credentials, TableTalk runs with a sample menu and demo staff PIN `1234`. Demo orders and status changes are stored in browser local storage, so they are shared across tabs in the same browser only. Add Supabase credentials and run the schema/seed scripts for a shared live queue across devices.
